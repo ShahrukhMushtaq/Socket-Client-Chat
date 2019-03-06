@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { WebsocketService } from "./services/websocket.service";
+import { ChatService } from "./services/chat.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'socket-client';
+  title = 'socket-client chat app';
+  msg;
+  displayMsg = [];
+  constructor(private chat: ChatService) { }
+  ngOnInit(): void {
+    this.chat.message.subscribe((msg) => {
+      this.displayMsg.push(msg)
+      console.log(this.displayMsg)
+    })
+  }
+  sendMsg() {
+    this.chat.sendMessage(this.msg)
+    this.msg = ''
+  }
 }
