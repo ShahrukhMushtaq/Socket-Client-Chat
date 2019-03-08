@@ -13,9 +13,12 @@ export class AppComponent {
   displayMsg = [];
   constructor(private chat: ChatService) { }
   ngOnInit(): void {
-    this.chat.message.subscribe((msg) => {
+    // this.chat.message.subscribe((msg) => {
+    //   this.displayMsg.push(msg)
+    //   console.log(this.displayMsg)
+    // })
+    this.chat.receiveMessage().subscribe((msg) => {
       this.displayMsg.push(msg)
-      console.log(this.displayMsg)
     })
   }
   sendMsg() {

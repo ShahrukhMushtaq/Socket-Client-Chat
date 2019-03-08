@@ -1,0 +1,88 @@
+<!-- <div class="container-fluid">
+  <div class="jumbotron row">
+    <div class="col-md-6 text-center">
+      <input type="text" class="form-control" [(ngModel)]="msg" name="msg">
+      <br>
+      <button [disabled]="!userID" class="btn btn-info" (click)="sendMsg()">Send Message</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ul style="list-style:none">
+        <li *ngFor="let item of displayMsg">
+          {{item.data}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h5>Online Users</h5>
+      <ul style="list-style:none">
+        <li *ngFor="let item of onlineUsers">{{item}}</li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container" *ngIf="flag">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <form>
+      <div class="form-group">
+        <label>Enter UserName</label>
+        <input type="text" class="form-control" placeholder="Enter Name" [(ngModel)]="username" name="a">
+        <small *ngIf="errors" class="alert alert-warning">{{errors}}</small>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="setUserName()">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="container" *ngIf="!flag">
+  <h3 class=" text-center">Messaging</h3>
+  <div class="messaging">
+    <div class="inbox_msg">
+      <div class="inbox_people">
+        <div class="headind_srch">
+          <div class="recent_heading">
+            <h4>Online Users</h4>
+          </div>
+        </div>
+        <div class="inbox_chat">
+          <div class="chat_list active_chat" *ngFor="let item of onlineUsers">
+            <div class="chat_people">
+              <div class="chat_img">
+                <i class="fa fa-circle" style="color: green;font-size: 23px;"></i>
+              </div>
+              <div class="chat_ib">
+                <h5>{{item}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mesgs">
+        <div class="msg_history">
+          <div class="incoming_msg" *ngFor="let msgs of displayMsg">
+            <div class="received_msg">
+              <div class="received_withd_msg">
+                <p> <b>{{msgs.user}}:</b> {{msgs.message}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="type_msg">
+          <div class="input_msg_write">
+            <input type="text" class="write_msg" placeholder="Type a message" [(ngModel)]="msg" (keyup.enter)="sendMsg()" />
+            <button class="msg_send_btn" type="button" (click)="sendMsg()"><i class="fa fa-paper-plane-o"
+                aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <p class="text-center top_spac"> Design by <a target="_blank" href="#">Sunil Rajput</a></p>
+
+  </div>
+</div>

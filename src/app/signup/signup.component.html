@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-4"></div>
+
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Enter email" [(ngModel)]="user.email" name="a">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputUser">Username</label>
+      <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp"
+        placeholder="Enter username" [(ngModel)]="user.username" name="b">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+        [(ngModel)]="user.password" name="c">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="signup()">Submit</button>
+    <button style="float:right" type="submit" class="btn btn-primary" [routerLink]="['/login']"
+      routerLinkActive="router-link-active">Want to Login</button>
+  </form>
+
+
+</div>
